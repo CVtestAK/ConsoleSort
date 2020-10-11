@@ -19,10 +19,13 @@ import java.util.stream.Stream;
 public class ConsoleSort {
     public static void main(String[] args) {
         System.out.println("Поместите текстовый файл в папку toSort приложения ConsoleSort");
+        System.out.println("Укажите полное имя файла в формате \"ConsoleTest.txt\":");
         Scanner in = new Scanner(System.in);
-        System.out.println("Укажите имя файла:");
         String file = "toSort/" + in.nextLine();
         System.out.println("Выберите тип сортировки:");
+        System.out.println("1 - По алфавиту");
+        System.out.println("2 - По количеству символов в строке");
+        System.out.println("3 - По порядковому номеру слова в строке");
         int sortingType = in.nextInt();
         try (Stream<String> stream = Files.lines(Paths.get(file), Charset.defaultCharset())) {
             File sorted = new File("sorted", "sorted.txt");
