@@ -34,8 +34,9 @@ public class ConsoleSort {
                     .collect(Collectors.groupingBy(
                             Function.identity(), LinkedHashMap::new, Collectors.counting()));
             List<String> countedLines = lines.stream()
-                    .map(line -> line = line + " " + countMap.get(line))
-                    .collect(Collectors.toList());
+                    .map(line -> line = line.concat(" ")
+                            .concat(String.valueOf(countMap.get(line))))
+                                .collect(Collectors.toList());
             switch (sortingType) {
                 case 1 -> sortByAbc(countedLines, sorted);
                 case 2 -> sortByLength(countedLines, sorted);
